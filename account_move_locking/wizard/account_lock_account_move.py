@@ -18,24 +18,26 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ##############################################################################
 
-from openerp import fields, models, api, _, exceptions
+#from openerp import fields, models, api, _, exceptions
+from openerp.osv import fields, orm
+from openerp import exceptions
 
 
-class lock_account_move(models.TransientModel):
+class lock_account_move(orm.TransientModel):
     _name = "lock.account.move"
     _description = "Lock Account Move"
 
-    journal_ids = fields.Many2many('account.journal',
+    journal_ids = fields.many2many('account.journal',
                                    rel='wizard_lock_account_move_journal',
                                    string='Journal',
                                    required=True)
-    period_ids = fields.Many2many('account.period',
+    period_ids = fields.many2many('account.period',
                                   rel='wizard_lock_account_move_period',
                                   string='Period',
                                   required=True,
                                   domain=[('state', '<>', 'done')])
 
-    @api.multi
+#    @api.multi
     def lock_move(self, data):
         obj_move = self.env['account.move']
         draft_move = obj_move.search([('state', '=', 'draft'),

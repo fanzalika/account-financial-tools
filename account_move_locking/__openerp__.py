@@ -24,8 +24,7 @@
     "author": "Camptocamp,Odoo Community Association (OCA)",
     'license': 'AGPL-3',
     'website': 'http://www.camptocamp.com',
-    'data': ['account_view.xml',
-             'wizard/account_lock_move_view.xml'],
+    'data': ['account_view.xml'],
     'installable': True,
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

@@ -18,4 +18,4 @@
 #
 ##############################################################################
 from . import account
-from . import wizard
+# from . import wizard
